@@ -24,9 +24,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install dependencies & build web bundle
         run: |
           npm install
@@ -34,7 +31,7 @@ jobs:
 
       - name: Add Capacitor Android & Sync
         run: |
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           npx cap add android
           npx cap sync android
 
@@ -42,10 +39,11 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon
 
       - name: Upload AKASHDEEP KRISHI LLP APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: AKASHDEEP-KRISHI-LLP-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+

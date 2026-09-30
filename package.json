@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "apk:cap:setup": "npm install @capacitor/core @capacitor/cli @capacitor/android && npx cap add android",
+    "apk:cap:setup": "npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 && npx cap add android",
     "apk:cap:sync": "npm run build && npx cap sync android",
     "apk:cap:open": "npx cap open android"
   },

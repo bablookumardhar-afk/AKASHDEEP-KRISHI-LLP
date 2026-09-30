@@ -346,14 +346,70 @@ export const OfflineApkModal: React.FC<{
   const [downloading, setDownloading] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [buildTarget, setBuildTarget] = useState<
-    'capacitor' | 'react-native' | 'flutter'
-  >('capacitor');
+    'github-yaml' | 'capacitor' | 'react-native'
+  >('github-yaml');
   const [copiedCmd, setCopiedCmd] = useState(false);
 
   const BUILD_COMMANDS: Record<
-    'capacitor' | 'react-native' | 'flutter',
+    'github-yaml' | 'capacitor' | 'react-native',
     { label: string; badge: string; descBn: string; descEn: string; cmd: string }
   > = {
+    'github-yaml': {
+      label: 'GitHub Action YAML',
+      badge: 'Fixed (No setup-android)',
+      descBn:
+        'GitHub-এ .github/workflows/build-apk.yml ফাইলটি এডিট (Pencil আইকন) করে নিচের কোডটি পেস্ট করে Commit করুন:',
+      descEn:
+        'On GitHub.com, open .github/workflows/build-apk.yml, click the Pencil (Edit) icon, paste this fixed YAML (without setup-android@v3), and click Commit changes:',
+      cmd: `name: Build Android APK (AKASHDEEP KRISHI LLP)
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up JDK 17 for Android Gradle
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install dependencies & build web bundle
+        run: |
+          npm install
+          npm run build
+
+      - name: Add Capacitor Android & Sync
+        run: |
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          npx cap add android
+          npx cap sync android
+
+      - name: Build Debug APK with Gradle
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Upload AKASHDEEP KRISHI LLP APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AKASHDEEP-KRISHI-LLP-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk`,
+    },
     capacitor: {
       label: 'Capacitor APK',
       badge: '100% Exact UI',
@@ -371,15 +427,6 @@ export const OfflineApkModal: React.FC<{
       descEn:
         'Standalone React Native (Expo SDK 52) project structured in /mobile-react-native with eas.json configured for direct APK output.',
       cmd: 'cd mobile-react-native\nnpm install\nnpx eas-cli build -p android --profile preview',
-    },
-    flutter: {
-      label: 'Flutter APK',
-      badge: '/mobile-flutter',
-      descBn:
-        '/mobile-flutter ফোল্ডারে ডার্ট ও Material 3 ভিত্তিক সম্পূর্ণ প্রজেক্ট প্রস্তুত করা আছে।',
-      descEn:
-        'Standalone Flutter Material 3 project structured in /mobile-flutter/lib/main.dart ready for release APK compilation.',
-      cmd: 'cd mobile-flutter\nflutter create --org com.akashdeepkrishi .\nflutter pub get\nflutter build apk --release',
     },
   };
 
@@ -464,10 +511,10 @@ export const OfflineApkModal: React.FC<{
 
         <div className="grid grid-cols-3 gap-1.5">
           {(
-            ['capacitor', 'react-native', 'flutter'] as (
+            ['github-yaml', 'capacitor', 'react-native'] as (
+              | 'github-yaml'
               | 'capacitor'
               | 'react-native'
-              | 'flutter'
             )[]
           ).map((key) => {
             const selected = buildTarget === key;
