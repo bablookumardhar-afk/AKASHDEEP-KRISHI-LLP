@@ -3,6 +3,7 @@ import { AgroMapScreen } from './components/AgroMapScreen';
 import { BottomNav } from './components/BottomNav';
 import { CropsScreen } from './components/CropsScreen';
 import { DistrictCropsScreen } from './components/DistrictCropsScreen';
+import { FertilizerSchedulerScreen } from './components/FertilizerSchedulerScreen';
 import { Header } from './components/Header';
 import {
   CropProtocolModal,
@@ -96,6 +97,15 @@ export default function App() {
               }
               onOpenHelplineModal={(number, title) =>
                 setHelplineModalData({ number, title })
+              }
+            />
+          )}
+
+          {activeScreen === 'fertilizer-scheduler' && (
+            <FertilizerSchedulerScreen
+              onNavigate={handleSelectScreen}
+              onOpenPdfModal={(title, subtitle) =>
+                setPdfModalData({ title, subtitle })
               }
             />
           )}

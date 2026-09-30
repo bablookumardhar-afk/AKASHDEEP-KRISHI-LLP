@@ -365,7 +365,21 @@ export const CropsScreen: React.FC<CropsScreenProps> = ({
       />
 
       {/* Quick Actions Floating Grid */}
-      <section className="grid grid-cols-3 gap-2 w-full">
+      <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
+        <button
+          onClick={() => onNavigate('fertilizer-scheduler')}
+          className="bg-surface-container-lowest p-2.5 rounded-xl flex flex-col items-center justify-center text-center gap-1.5 shadow-sm hover:bg-surface-container-low active:bg-surface-container transition-colors cursor-pointer"
+          type="button"
+        >
+          <div className="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+            <span className="material-symbols-outlined text-[20px] icon-filled">
+              event_upcoming
+            </span>
+          </div>
+          <span className="font-label-sm text-label-sm text-on-surface font-medium leading-tight">
+            {t('সার সূচী ও রিমাইন্ডার', 'Fertilizer Scheduler')}
+          </span>
+        </button>
         <button
           onClick={() => onNavigate('soil-and-pre-sow')}
           className="bg-surface-container-lowest p-2.5 rounded-xl flex flex-col items-center justify-center text-center gap-1.5 shadow-sm hover:bg-surface-container-low active:bg-surface-container transition-colors cursor-pointer"

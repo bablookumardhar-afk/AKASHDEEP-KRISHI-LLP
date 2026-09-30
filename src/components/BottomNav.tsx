@@ -32,6 +32,12 @@ const NAV_ITEMS: {
     icon: 'compost',
   },
   {
+    id: 'fertilizer-scheduler',
+    labelBn: 'সার সূচী',
+    labelEn: 'Scheduler',
+    icon: 'event_upcoming',
+  },
+  {
     id: 'crop-protection',
     labelBn: 'সুরক্ষা',
     labelEn: 'Protection',

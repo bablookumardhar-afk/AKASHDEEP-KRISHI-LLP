@@ -3,7 +3,8 @@ export type ScreenId =
   | 'soil-and-pre-sow'
   | 'crop-protection'
   | 'regional-map'
-  | 'district-crops';
+  | 'district-crops'
+  | 'fertilizer-scheduler';
 
 export const IMAGES = {
   akashdeepLogo:
