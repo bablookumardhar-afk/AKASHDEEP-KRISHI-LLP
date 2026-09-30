@@ -26,13 +26,46 @@ jobs:
 
       - name: Install dependencies & build web bundle
         run: |
-          npm install
+          node -e '
+            const fs = require("fs");
+            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+            delete pkg.dependencies["@google/genai"];
+            if (pkg.devDependencies) delete pkg.devDependencies["vite-plugin-pwa"];
+            pkg.dependencies["vite"] = "^6.2.0";
+            pkg.dependencies["@vitejs/plugin-react"] = "^4.3.4";
+            pkg.dependencies["@tailwindcss/vite"] = "^4.0.9";
+            pkg.dependencies["react"] = "^19.0.0";
+            pkg.dependencies["react-dom"] = "^19.0.0";
+            pkg.dependencies["lucide-react"] = "^0.475.0";
+            if (pkg.devDependencies) {
+              pkg.devDependencies["tailwindcss"] = "^4.0.9";
+              pkg.devDependencies["typescript"] = "^5.7.3";
+              pkg.devDependencies["@types/react"] = "^19.0.8";
+              pkg.devDependencies["@types/react-dom"] = "^19.0.3";
+            }
+            fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
+
+            if (fs.existsSync("src/App.tsx")) {
+              let app = fs.readFileSync("src/App.tsx", "utf8");
+              if (app.includes("<LanguageProvider>") && !app.includes("</LanguageProvider>")) {
+                app = app.replace(/(\s*\);\s*\}\s*)$/, "\n    </LanguageProvider>$1");
+                fs.writeFileSync("src/App.tsx", app);
+              }
+            }
+          '
+          rm -f package-lock.json
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Add Capacitor Android & Sync
         run: |
-          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
-          npx cap add android
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 --legacy-peer-deps
+          if [ ! -f capacitor.config.json ] && [ ! -f capacitor.config.ts ]; then
+            npx cap init "AKASHDEEP KRISHI LLP" "com.akashdeepkrishi.agriadvisor" --web-dir dist
+          fi
+          if [ ! -d android ]; then
+            npx cap add android
+          fi
           npx cap sync android
 
       - name: Build Debug APK with Gradle
@@ -46,4 +79,3 @@ jobs:
         with:
           name: AKASHDEEP-KRISHI-LLP-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
-
