@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface-container-low: #ebf7ed;
+  --color-surface-container-high: #e0ebe2;
+  --color-on-tertiary-container: #99afff;
+  --color-secondary-fixed-dim: #ffb68e;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-primary-container: #134e35;
+  --color-on-primary-fixed-variant: #165037;
+  --color-surface-tint: #31694e;
+  --color-surface-container: #e5f1e7;
+  --color-background: #f1fcf3;
+  --color-tertiary-fixed: #dce1ff;
+  --color-on-surface: #141e18;
+  --color-error-container: #ffdad6;
+  --color-surface-dim: #d1ddd4;
+  --color-surface: #f1fcf3;
+  --color-primary-fixed: #b4f0cd;
+  --color-on-error-container: #93000a;
+  --color-surface-bright: #f1fcf3;
+  --color-on-tertiary-fixed-variant: #264191;
+  --color-outline: #707972;
+  --color-on-tertiary-fixed: #00164e;
+  --color-tertiary-fixed-dim: #b6c4ff;
+  --color-secondary-container: #fd8a42;
+  --color-secondary-fixed: #ffdbca;
+  --color-on-primary-fixed: #002113;
+  --color-outline-variant: #c0c9c1;
+  --color-inverse-on-surface: #e8f4ea;
+  --color-tertiary-container: #243f8f;
+  --color-on-secondary-fixed-variant: #763300;
+  --color-primary-fixed-dim: #99d3b2;
+  --color-inverse-primary: #99d3b2;
+  --color-on-background: #141e18;
+  --color-on-secondary-container: #682c00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary: #012778;
+  --color-on-primary: #ffffff;
+  --color-surface-container-highest: #dae5dc;
+  --color-secondary: #9b4500;
+  --color-surface-variant: #dae5dc;
+  --color-primary: #003622;
+  --color-on-secondary-fixed: #331200;
+  --color-on-primary-container: #85be9e;
+  --color-on-surface-variant: #404943;
+  --color-surface-container-lowest: #ffffff;
+  --color-inverse-surface: #29332c;
+  --color-on-secondary: #ffffff;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-gutter: 1rem;
+  --spacing-margin: 1rem;
+
+  --font-display: "Epilogue", "Noto Sans Bengali", "Noto Sans", sans-serif;
+  --font-sans: "Noto Sans", "Noto Sans Bengali", sans-serif;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #e5f1e7;
+    font-family: "Noto Sans", "Noto Sans Bengali", sans-serif;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Typography Classes matching the exact design tokens */
+.font-display-lg, .font-display-md, .font-headline-lg, .font-headline-lg-mobile, .font-headline-md, .font-headline-sm {
+  font-family: "Epilogue", "Noto Sans Bengali", "Noto Sans", sans-serif;
+}
+
+.font-title-lg, .font-title-md, .font-title-sm, .font-label-lg, .font-label-md, .font-label-sm, .font-body-lg, .font-body-md, .font-body-sm {
+  font-family: "Noto Sans", "Noto Sans Bengali", sans-serif;
+}
+
+.text-display-lg {
+  font-size: 44px;
+  line-height: 52px;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.text-display-md {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+.text-headline-lg {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+.text-headline-lg-mobile {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+.text-headline-md {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.text-headline-sm {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.text-title-lg {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.text-title-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.text-title-sm {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.text-label-lg {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.text-label-md {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+.text-label-sm {
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+.text-body-lg {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.text-body-md {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.text-body-sm {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+.icon-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+

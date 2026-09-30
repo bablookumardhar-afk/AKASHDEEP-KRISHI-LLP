@@ -1,0 +1,6 @@
+{
+  "name": "AKASHDEEP KRISHI LLP",
+  "description": "AKASHDEEP KRISHI LLP — Bilingual North Bengal agronomy assistant with seasonal crop guides, soil conditioning dosage calculator, CIB&RC crop protection protocols, agro-climatic map, and district crop directories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

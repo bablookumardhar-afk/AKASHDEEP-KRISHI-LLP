@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "AKASHDEEP KRISHI LLP",
+    "slug": "akashdeep-krishi-llp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "primaryColor": "#003622",
+    "splash": {
+      "backgroundColor": "#003622",
+      "resizeMode": "contain"
+    },
+    "android": {
+      "package": "com.akashdeepkrishi.agriadvisor",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#003622"
+      },
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ]
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.akashdeepkrishi.agriadvisor"
+    }
+  }
+}
