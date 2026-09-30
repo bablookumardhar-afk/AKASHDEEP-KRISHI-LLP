@@ -63,9 +63,9 @@ export const Header: React.FC<HeaderProps> = ({
                 <h1 className="font-title-sm text-title-sm text-primary tracking-tight truncate leading-tight">
                   Akashdeep Krishi LLP
                 </h1>
-                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[10px] leading-none flex-shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
-                  {t('অফলাইন প্রস্তুত', 'Offline Ready')}
+                <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-[10px] font-semibold leading-none flex-shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  {t('লাইভ সংযুক্ত', 'Live Online')}
                 </span>
               </div>
               <p className="font-label-sm text-label-sm text-on-surface-variant truncate">
@@ -137,16 +137,14 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-1 shrink-0">
           {LanguageSwitchButton}
           <button
-            aria-label="Offline Ready status and sync options"
+            aria-label="Online Sync & Mobile APK Studio"
             onClick={onOpenOfflineModal}
-            className="min-h-[38px] px-2 py-1 rounded-full bg-surface-container-low text-primary flex items-center gap-1 hover:bg-surface-container-high transition-colors cursor-pointer"
+            className="min-h-[38px] px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center gap-1.5 hover:bg-primary-fixed-dim transition-colors cursor-pointer"
             type="button"
           >
-            <span className="material-symbols-outlined text-[18px] text-primary">
-              cloud_done
-            </span>
-            <span className="font-label-sm text-label-sm font-semibold hidden sm:inline">
-              {t('অফলাইন', 'Offline')}
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span className="font-label-sm text-label-sm font-bold">
+              {t('অনলাইন', 'Online')}
             </span>
           </button>
           <button

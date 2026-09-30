@@ -412,14 +412,8 @@ export const WeatherForecastCard: React.FC<WeatherForecastCardProps> = ({
 
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="font-label-sm text-[10px] text-primary font-semibold flex items-center gap-1">
-            <span
-              className={`w-1.5 h-1.5 rounded-full ${
-                weather.isLive ? 'bg-primary animate-pulse' : 'bg-secondary'
-              }`}
-            ></span>
-            {weather.isLive
-              ? t('লাইভ আবহাওয়া', 'Open-Meteo Live')
-              : t('অফলাইন সিঙ্ক', 'Offline Sync')}
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            {t('লাইভ আবহাওয়া', 'Live Weather')}
           </span>
           <button
             type="button"

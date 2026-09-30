@@ -134,8 +134,8 @@ export const CropsScreen: React.FC<CropsScreenProps> = ({
                 </div>
                 <p className="font-label-sm text-label-sm text-on-surface-variant truncate">
                   {t(
-                    'অফলাইন নির্দেশিকা (সম্পূর্ণ উত্তরবঙ্গ শস্য ডেটাবেস)',
-                    'Offline Field Guide (Full North Bengal Crop DB)'
+                    'লাইভ আবহাওয়া ও সম্পূর্ণ উত্তরবঙ্গ শস্য ডেটাবেস',
+                    'Live Weather & Full North Bengal Crop DB'
                   )}
                 </p>
               </div>
@@ -153,15 +153,15 @@ export const CropsScreen: React.FC<CropsScreenProps> = ({
           </div>
           <div className="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded-lg text-primary">
             <span className="material-symbols-outlined text-[18px] shrink-0">
-              signal_wifi_off
+              cloud_done
             </span>
             <p className="font-label-sm text-label-sm leading-tight text-on-surface-variant">
               <strong className="font-medium text-primary">
-                {t('৪জি ছাড়াই ১০০% কাজ করে', '100% works without 4G')}
+                {t('অনলাইন ও লো-নেটওয়ার্ক সক্রিয়', 'Online & Low-Network Ready')}
               </strong>{' '}
               {t(
-                'দূরবর্তী চা বাগান, ডুয়ার্স ও নদীর চরের জমিতে।',
-                'in remote tea estates, Dooars & riverside fields.'
+                'চা বাগান, ডুয়ার্স ও নদীর চরের জমির জন্য।',
+                'for tea estates, Dooars & riverside fields.'
               )}
             </p>
           </div>

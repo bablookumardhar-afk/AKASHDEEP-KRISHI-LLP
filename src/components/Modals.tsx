@@ -455,14 +455,14 @@ jobs:
       title={
         mode === 'guide'
           ? t(
-              'APK বিল্ড স্টুডিও ও অফলাইন গাইড',
-              'Mobile APK Build Studio & Offline Guide'
+              'APK বিল্ড স্টুডিও ও ক্লাউড গাইড',
+              'Mobile APK Build Studio & Cloud Guide'
             )
-          : 'AKASHDEEP KRISHI LLP — Mobile & APK'
+          : 'AKASHDEEP KRISHI LLP — Online & APK'
       }
       subtitle={t(
-        'Capacitor, React Native ও Flutter APK প্রজেক্ট প্রস্তুত',
-        'Structured for Capacitor, React Native (Expo) & Flutter APK'
+        'লাইভ আবহাওয়া ও মোবাইল APK বিল্ড স্টুডিও',
+        'Live Weather Sync & Mobile APK Build Studio'
       )}
       onClose={onClose}
     >
@@ -477,18 +477,18 @@ jobs:
             <p className="font-title-sm text-title-sm text-on-surface font-bold">
               {isInstalled
                 ? t('অ্যাপ ইনস্টল করা আছে', 'App Installed (Standalone)')
-                : 'SQLite & PWA Agro-DB v2025.4 Ready'}
+                : t('অনলাইন কৃষি ডেটাবেস সক্রিয়', 'Online Agro-DB v2025.4 Connected')}
             </p>
             <p className="font-label-sm text-label-sm text-on-surface-variant">
               {t(
-                '৮টি জেলার মৃত্তিকা, সার ক্যালকুলেটর ও কীটনাশক ডোজ সংরক্ষিত',
-                '8-district soil profiles, dosage calculator & CIB&RC rates cached'
+                '৮টি জেলার লাইভ আবহাওয়া, সার ক্যালকুলেটর ও কীটনাশক ডোজ সক্রিয়',
+                '8-district live weather, dosage calculator & CIB&RC rates active'
               )}
             </p>
           </div>
         </div>
         <span className="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">
-          Active
+          {t('অনলাইন', 'Online')}
         </span>
       </div>
 

@@ -3,11 +3,16 @@ import App from './App.tsx';
 import './index.css';
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {
-      // Ignore service worker registration errors in preview iframe
+  navigator.serviceWorker
+    .getRegistrations()
+    .then((registrations) => {
+      for (const registration of registrations) {
+        registration.unregister();
+      }
+    })
+    .catch(() => {
+      // Ignore unregister errors
     });
-  });
 }
 
 createRoot(document.getElementById('root')!).render(<App />);
